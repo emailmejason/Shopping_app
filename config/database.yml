@@ -1,0 +1,18 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: Amazon_App_development
+  pool: 5
+  username: tomgalpin
+  host: localhost
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: Amazon_App_test
+  pool: 5
+  username: tomgalpin
+  host: localhost
+  password:
+  min_messages: WARNING

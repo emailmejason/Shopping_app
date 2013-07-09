@@ -1,0 +1,29 @@
+<h1>Sessions#new</h1>
+
+<div id="login-signup_container">
+  <div id="signup_container">
+    <h2>Sign Up</h2>
+    <%= form_for @user do |f| %>
+      <label>Username:</label><br>
+      <%= f.text_field :username %><br>
+      <label>Password:</label><br>
+      <%= f.password_field :password %><br>
+      <label>Password Confirmation:</label><br>
+      <%= f.password_field :password_confirmation %><br>
+      <br>
+      <%= f.submit "Sign up" %>
+    <% end %>
+  </div>
+
+  <div id="login_container">
+    <h2>Log In</h2>
+    <%= form_tag sessions_path  do %>
+      <%= label_tag :username, "Username:" %><br>
+      <%= text_field_tag :username %><br>
+      <%= label_tag :password, "Password:" %><br>
+      <%= password_field_tag :password %><br>
+      <br>
+      <%= submit_tag "Log In" %>
+    <% end %>
+  </div>
+</div>
