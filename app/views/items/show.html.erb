@@ -1,2 +1,26 @@
 <h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+
+<h2><%= @item.name %></h2>
+<h4>Price:  <%= @item.price %></h4>
+
+<% @items.each do |item| %>
+  <% item.reviews.each do |review| %>
+    <p><%= review.content %></p>
+  <% end %>
+<% end %>
+
+<p>Add to Shopping Cart:
+  <%= form_tag  user_shopping_cart_path, :method => 'post' do %>
+  <%= hidden_field_tag :user_id, @user.id %>
+  <%= hidden_field_tag :item_id, @item.id %>
+
+  <%= button_tag "Submit" %>
+  <% end %>
+</p>
+
+
+<%= form_for @review, :url => new_review_path(@item.id), :method => 'post' do |f| %>
+<%= f.label "Write a Review of This Product" %><br>
+<%= f.text_area :content %><br>
+<%= f.submit %>
+<% end %>

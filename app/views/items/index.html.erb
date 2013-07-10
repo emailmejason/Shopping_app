@@ -1,10 +1,24 @@
 <h1>Items#index</h1>
 
-<ul>
-  <% @items.each do |item| %>
-  <li>
-    <p><%= item.name %> -- <%= item.price %></p>
-  </li>
-  <% end %>
-</ul>
+<div>
+
+  <div id="items_container">
+    <% @uniques.each do |item| %>
+    <div id="items_container_item_name">
+      Name:  <%= link_to item.name, item %>
+    </div>
+    <div id="items_container_item_price">
+      Price: <%= item.price %>
+    </div>
+    <% end %>
+  </div> <!-- items_container -->
+
+    <% @unique_count.map do |count| %>
+    <div id="count_container">
+      <%= count.first %> Count: <%= count.last %>
+    </div>
+    <% end %>
+
+</div>
+<p> Item Counts:  <%= @unique_count %></p>
 

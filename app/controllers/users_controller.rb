@@ -38,4 +38,19 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
   end
+
+  def add_to_shopping_cart
+    @user = current_user
+    @item = Item.find(params[:item_id])
+
+    @item.user_id = @user.id
+    @item.save
+
+    redirect_to user_path(@user.id)
+  end
+
 end
+
+
+
+

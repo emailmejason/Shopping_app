@@ -1,10 +1,15 @@
 class ItemsController < ApplicationController
   def index
     @items = Item.all
+    @uniques = @items.uniq{ |item| item.name }
+    @unique_count = @items.group_by{|item| item.name }.map{ |k, v| [k, v.count] }
   end
 
   def show
     @item = Item.find(params[:id])
+    @items = Item.where(:name => @item.name)
+    @review = Review.new
+    @user = current_user
   end
 
   def new

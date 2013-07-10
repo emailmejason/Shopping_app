@@ -6,11 +6,18 @@ AmazonApp::Application.routes.draw do
   match "logout" => "sessions#destroy", :as => "logout"
   match "login" => "sessions#new", :as => "login"
 
-  resources :users, :only => [:new, :create]
+  resources :users, :only => [:new, :create, :show]
+
+  post 'user/add_to_shopping_cart' => 'users#add_to_shopping_cart', :as => 'user_shopping_cart'
 
   resources :items
+
+  post 'reviews/new/:item_id' =>  'reviews#create', :as => 'new_review'
   resources :reviews
-  resources :users
+
+
+
+
 
   root :to => "items#index"
 end

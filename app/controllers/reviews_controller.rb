@@ -14,9 +14,11 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(params[:review])
+    @item_id = params[:item_id]
+    @review.item_id = @item_id
 
     if @review.save
-      redirect_to reviews_path
+      redirect_to item_path(@item_id)
     else
       render :new
     end
